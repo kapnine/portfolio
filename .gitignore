@@ -9,7 +9,7 @@ lerna-debug.log*
 
 node_modules
 .DS_Store
-dist
+/dist
 dist-ssr
 coverage
 *.local
@@ -29,5 +29,11 @@ coverage
 
 *.tsbuildinfo
 
+da_proj.py
+
 test-results/
 playwright-report/
+
+# local env files
+.env.local
+.env.*.local
