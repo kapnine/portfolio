@@ -10,9 +10,17 @@
 
   const responseMessage = ref('')
 
+  const apiClient = axios.create({
+    baseURL: import.meta.env.VITE_API_URL,
+    timeout: 10000,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
   const submitForm = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/contact/', form.value)
+      const response = await apiClient.post('/contact/', form.value)
       responseMessage.value = response.data.message
     } catch (error) {
       responseMessage.value = 'There was an error sending your message.'
