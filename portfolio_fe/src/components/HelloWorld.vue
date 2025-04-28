@@ -56,6 +56,7 @@
     { name: 'PyCharm', icon: 'mdi-code-braces' },
     { name: 'VS Code', icon: 'mdi-microsoft-visual-studio-code' },
     { name: 'Azure DevOps', icon: 'mdi-microsoft-azure' },
+    { name: 'Docker', icon: 'mdi-docker' },
     { name: 'GitHub', icon: 'mdi-github' },
     { name: 'Postgres', icon: 'mdi-database' },
   ];
