@@ -52,7 +52,7 @@ services:
       - .env
     command: npm run serve -- --host 0.0.0.0
     ports:
-      - "80:3000"
+      - "80:8080"
     networks:
       - backend
 
