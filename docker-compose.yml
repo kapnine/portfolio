@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: postgis/postgis:14-3.1-alpine
+    image: postgres:15.3-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:

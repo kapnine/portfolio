@@ -1,8 +1,10 @@
 # portfolio, Justin Kapacinskas
 
+See live site here: [https://kapnine-portfolio.azurewebsites.net](https://kapnine-portfolio.azurewebsites.net)
+
 ### to test backend locally
 
-```sh
+```bash
 ➜  python manage.py runserver
 
 ➜  curl -X POST http://localhost:8000/contact/ \
@@ -12,7 +14,7 @@
 
 #### result
 
-```json
+```javascript
 {"message": "Contact saved successfully", "contact_id": 3}
 ```
 

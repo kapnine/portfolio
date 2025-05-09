@@ -1,4 +1,4 @@
-FROM node:slim
+FROM node:lts-slim
 
 # Set the working directory
 WORKDIR /app
