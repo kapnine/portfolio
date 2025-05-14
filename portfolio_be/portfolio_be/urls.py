@@ -18,5 +18,5 @@ from django.urls import path, include
 from contact import urls as contact_urls
 
 urlpatterns = [
-    path('contact/', include(contact_urls)),
+    path('api/contact/', include(contact_urls)),
 ]
