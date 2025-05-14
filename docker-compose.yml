@@ -1,12 +1,10 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:15.3-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    env_file:
-      - .env 
+    # env_file:
+    #   - .env 
     environment:
       POSTGRES_DB: ${DATABASE_NAME}
       POSTGRES_USER: ${DATABASE_USER}
@@ -25,8 +23,8 @@ services:
     build:
       context: ./portfolio_be
       dockerfile: Dockerfile
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
     environment:
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_USER: ${DATABASE_USER}
@@ -44,8 +42,8 @@ services:
     build:
       context: ./portfolio_fe
       dockerfile: Dockerfile
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
     command: npm run serve -- --host 0.0.0.0
     networks:
       - backend
