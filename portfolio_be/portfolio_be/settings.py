@@ -64,7 +64,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:80',
     'http://127.0.0.1:3000',
-    'https://kapnine-portfolio.azurewebsites.net',
+    'http://20.80.81.230',
+    'https://justinkapacinskas.com',
     # Add other origins as needed
 ]
 

@@ -1,6 +1,6 @@
 # portfolio, Justin Kapacinskas
 
-See live site here: [https://kapnine-portfolio.azurewebsites.net](https://kapnine-portfolio.azurewebsites.net)
+See live site here: [https://justinkapacinskas.com](https://justinkapacinskas.com)
 
 ### to test backend locally
 

@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.11-slim-bullseye
 
 # Set the working directory
 WORKDIR /app
@@ -24,4 +24,5 @@ RUN chmod +x /wait-for-it.sh
 EXPOSE 8000
 
 # Default command
-CMD ["/wait-for-it.sh", "postgres:5432", "--", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+# CMD ["/wait-for-it.sh", "postgres:5432", "--", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["/wait-for-it.sh", "postgres:5432", "--", "gunicorn", "portfolio_be.wsgi:application", "--workers", "3", "--bind", "0.0.0.0:8000"]
