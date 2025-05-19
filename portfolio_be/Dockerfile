@@ -1,7 +1,7 @@
 FROM python:3.11-slim-bullseye
 
 # Set the working directory
-WORKDIR /portfolio_be
+WORKDIR /app
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -10,11 +10,11 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
-COPY portfolio_be/requirements.txt .
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code
-COPY portfolio_be /portfolio_be
+COPY . .
 
 # Copy the wait-for-it script
 COPY wait-for-it.sh /wait-for-it.sh
