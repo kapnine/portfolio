@@ -1,7 +1,7 @@
 FROM python:3.11-slim-bullseye
 
 # Set the working directory
-WORKDIR /app/portfolio_be
+WORKDIR /portfolio_be
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
-COPY requirements.txt .
+COPY portfolio_be/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code
