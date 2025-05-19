@@ -14,7 +14,7 @@ COPY portfolio_be/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code
-COPY . .
+COPY portfolio_be /portfolio_be
 
 # Copy the wait-for-it script
 COPY wait-for-it.sh /wait-for-it.sh
