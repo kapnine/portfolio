@@ -66,6 +66,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:80',
     'http://127.0.0.1:3000',
     'http://20.80.81.230',
+    'http://20.80.81.230:3000',
+    'http://20.80.81.230:80',
     'https://justinkapacinskas.com',
     # Add other origins as needed
 ]
