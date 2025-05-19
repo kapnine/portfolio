@@ -45,8 +45,8 @@ services:
       dockerfile: Dockerfile
     # env_file:
     #   - .env
-    # command: npm run serve -- --host 0.0.0.0
-    command: npm run build -- --host 0.0.0.0
+    command: npm run serve -- --host 0.0.0.0
+    # command: npm run build -- --host 0.0.0.0
     networks:
       - backend
     # Expose the port on the container only
