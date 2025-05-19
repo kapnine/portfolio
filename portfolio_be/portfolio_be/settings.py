@@ -37,7 +37,6 @@ ALLOWED_HOSTS = [
     '20.80.81.230',
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -72,7 +71,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_METHODS = [
-    'GET',
+    # 'GET',
     'POST',
     # 'PUT',
     # 'DELETE',
