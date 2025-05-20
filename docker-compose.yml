@@ -56,7 +56,7 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       # Optionally, if you want to serve Django static files from a shared volume:
