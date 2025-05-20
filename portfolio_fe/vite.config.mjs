@@ -76,6 +76,9 @@ export default defineConfig({
   },
   server: {
     port: 3000,
+    allowedHosts: ['justinkapacinskas.com'],
+    // Alternatively, to allow all hosts (less secure), you could use:
+    // allowedHosts: 'all'
   },
   css: {
     preprocessorOptions: {
