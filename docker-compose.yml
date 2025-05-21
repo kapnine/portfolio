@@ -58,11 +58,10 @@ services:
       - "8080:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      # Optionally, if you want to serve Django static files from a shared volume:
-      #- static_volume:/static
+      - ./portfolio_fe/dist:/usr/share/nginx/html:ro
     depends_on:
       - django
-      - vue
+      # - vue
     networks:
       - backend
 
