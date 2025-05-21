@@ -58,7 +58,7 @@ services:
       - "8080:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./portfolio_fe/dist:/usr/share/nginx/html:ro
+      - ./dist:/usr/share/nginx/html:ro
     depends_on:
       - django
       - vue
