@@ -51,6 +51,8 @@ services:
     # Expose the port on the container only
     expose:
       - "3000"
+    volumes:
+      - ./portfolio_fe/dist:/app/dist
 
   nginx:
     image: nginx:latest
@@ -58,7 +60,7 @@ services:
       - "8080:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./dist:/usr/share/nginx/html:ro
+      - ./portfolio_fe/dist:/usr/share/nginx/html:ro
     depends_on:
       - django
       - vue
