@@ -61,13 +61,12 @@ services:
       - ./portfolio_fe/dist:/usr/share/nginx/html:ro
     depends_on:
       - django
-      # - vue
+      - vue
     networks:
       - backend
 
 volumes:
   postgres_data:
-  static_volume:
 
 networks:
   backend:

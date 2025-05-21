@@ -15,3 +15,5 @@ RUN npm run build
 
 # Expose the application port
 EXPOSE 3000
+
+CMD ["npx", "serve", "-s", "dist", "-l", "3000"]
