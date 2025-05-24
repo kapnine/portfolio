@@ -67,17 +67,16 @@ services:
     networks:
       - backend
 
-
-certbot:
-  image: certbot/certbot
-  volumes:
-    - ./certbot/conf:/etc/letsencrypt
-    - ./certbot/logs:/var/log/letsencrypt
-    - ./nginx/conf.d:/etc/nginx/conf.d
-    - ./portfolio_fe/dist:/usr/share/nginx/html:ro
-  depends_on:
-    - nginx
-  command: certonly --webroot --webroot-path=/usr/share/nginx/html --email dulouz2001@hotmail.com --agree-tos --domain justinkapacinskas.com --rsa-key-size 4096
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/logs:/var/log/letsencrypt
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./portfolio_fe/dist:/usr/share/nginx/html:ro
+    depends_on:
+      - nginx
+    command: certonly --webroot --webroot-path=/usr/share/nginx/html --email dulouz2001@hotmail.com --agree-tos --domain justinkapacinskas.com --rsa-key-size 4096
 
 
 volumes:
