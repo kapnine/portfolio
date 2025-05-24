@@ -13,9 +13,6 @@ COPY . .
 # Build the Vue app
 RUN npm run build
 
-# Ensure correct permissions for the dist directory
-RUN chmod -R 755 dist
-
 # Expose the application port
 EXPOSE 3000
 
