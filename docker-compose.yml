@@ -57,25 +57,26 @@ services:
   nginx:
     image: nginx:latest
     ports:
-    - "80:80"
-    - "443:443"
+      - "80:80"
+      - "443:443"
     volumes:
-    - ./nginx/conf.d:/etc/nginx/conf.d
-    - ./portfolio_fe/dist:/var/www/html
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./portfolio_fe/dist:/var/www/html
+      - ./certbot/certs:/etc/letsencrypt
     depends_on:
-    - django
-    - vue
+      - django
+      - vue
     networks:
-    - backend
+      - backend
   certbot:
     image: certbot/certbot
     volumes:
-    - ./certbot/conf:/etc/letsencrypt
-    - ./certbot/logs:/var/log/letsencrypt
-    - ./nginx/conf.d:/etc/nginx/conf.d
-    - ./portfolio_fe/dist:/var/www/html
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/logs:/var/log/letsencrypt
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./portfolio_fe/dist:/var/www/html
     depends_on:
-    - nginx
+      - nginx
     command: certonly --webroot --webroot-path=/var/www/html --email dulouz2001@hotmail.com --agree-tos --domain justinkapacinskas.com --rsa-key-size 4096
 
 volumes:
