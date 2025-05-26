@@ -57,27 +57,23 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - "8080:80"
+    - "80:80"
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./portfolio_fe/dist:/usr/share/nginx/html:ro
+    - ./nginx/conf.d:/etc/nginx/conf.d
+    - ./portfolio_fe/dist:/var/www/html
     depends_on:
-      - django
-      - vue
-    networks:
-      - backend
-
+    - django
+    - vue
   certbot:
     image: certbot/certbot
     volumes:
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/logs:/var/log/letsencrypt
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./portfolio_fe/dist:/usr/share/nginx/html:ro
+    - ./certbot/conf:/etc/letsencrypt
+    - ./certbot/logs:/var/log/letsencrypt
+    - ./nginx/conf.d:/etc/nginx/conf.d
+    - ./portfolio_fe/dist:/var/www/html
     depends_on:
-      - nginx
-    command: certonly --webroot --webroot-path=/usr/share/nginx/html --email dulouz2001@hotmail.com --agree-tos --domain justinkapacinskas.com --rsa-key-size 4096
-
+    - nginx
+    command: certonly --webroot --webroot-path=/var/www/html --email dulouz2001@hotmail.com --agree-tos --domain justinkapacinskas.com --rsa-key-size 4096
 
 volumes:
   postgres_data:
