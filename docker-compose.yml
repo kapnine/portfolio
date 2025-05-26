@@ -64,6 +64,8 @@ services:
     depends_on:
     - django
     - vue
+    networks:
+    - backend
   certbot:
     image: certbot/certbot
     volumes:
