@@ -1,19 +1,13 @@
-FROM node:lts-slim
-
-# Set the working directory
+# build stage
+FROM node:lts-buster as build-stage
 WORKDIR /app
-
-# Install dependencies
-COPY package.json package-lock.json ./
+COPY package*.json ./
 RUN npm install
-
-# Copy the application code
 COPY . .
-
-# Build the Vue app
 RUN npm run build
 
-# Expose the application port
-EXPOSE 3000
-
-CMD ["npx", "serve", "-s", "dist", "-l", "3000"]
+# production stage
+FROM nginx:stable-alpine as production-stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
