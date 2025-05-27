@@ -62,27 +62,33 @@ services:
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./portfolio_fe/dist:/var/www/html
-      - /etc/letsencrypt:/etc/letsencrypt
-      # - ./certbot/certs:/etc/letsencrypt
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      # Optional: for ACME challenges during renewal
+      - ./certbot/www:/var/www/certbot:ro
     depends_on:
       - django
       - vue
     networks:
       - backend
+
   certbot:
     image: certbot/certbot
     volumes:
-      # - ./certbot/conf:/etc/letsencrypt
       - /etc/letsencrypt:/etc/letsencrypt
       - ./certbot/logs:/var/log/letsencrypt
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./portfolio_fe/dist:/var/www/html
-    depends_on:
-      - nginx
-    command: certonly --webroot --webroot-path=/var/www/html --email dulouz2001@hotmail.com --agree-tos --domain justinkapacinskas.com --rsa-key-size 4096
+      - ./certbot/www:/var/www/certbot
+    networks:
+      - backend
+    # For automatic renewal
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew --webroot --webroot-path /var/www/certbot; sleep 12h & wait $${!}; done;'"
+    # Or, if you only want to manually renew:
+    # command: certbot renew --webroot --webroot-path /var/www/certbot
+    # Or, to manually request a new cert (only if needed):
+    # command: certbot certonly --webroot --webroot-path /var/www/certbot -d yourdomain.com --email your@email.com --agree-tos --rsa-key-size 4096
 
 volumes:
   postgres_data:
 
 networks:
   backend:
+    driver: bridge
