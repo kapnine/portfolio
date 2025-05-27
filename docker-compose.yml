@@ -54,22 +54,23 @@ services:
     volumes:
       - ./portfolio_fe/dist:/app/dist
 
-  nginx:
-    image: nginx:latest
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./portfolio_fe/dist:/var/www/html
-      - /etc/letsencrypt:/etc/letsencrypt:ro
-      # Optional: for ACME challenges during renewal
-      - ./certbot/www:/var/www/certbot:ro
-    depends_on:
-      - django
-      - vue
-    networks:
-      - backend
+nginx:
+  build:
+    context: ./portfolio_fe
+    dockerfile: Dockerfile
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - ./nginx/conf.d:/etc/nginx/conf.d
+    - /etc/letsencrypt:/etc/letsencrypt:ro
+    # Optional: for ACME challenges during renewal
+    - ./certbot/www:/var/www/certbot:ro
+  depends_on:
+    - django
+    - vue
+  networks:
+    - backend
 
   certbot:
     image: certbot/certbot
