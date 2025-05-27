@@ -62,7 +62,8 @@ services:
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./portfolio_fe/dist:/var/www/html
-      - ./certbot/certs:/etc/letsencrypt
+      - /etc/letsencrypt:/etc/letsencrypt
+      # - ./certbot/certs:/etc/letsencrypt
     depends_on:
       - django
       - vue
@@ -71,7 +72,8 @@ services:
   certbot:
     image: certbot/certbot
     volumes:
-      - ./certbot/conf:/etc/letsencrypt
+      # - ./certbot/conf:/etc/letsencrypt
+      - /etc/letsencrypt:/etc/letsencrypt
       - ./certbot/logs:/var/log/letsencrypt
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./portfolio_fe/dist:/var/www/html
