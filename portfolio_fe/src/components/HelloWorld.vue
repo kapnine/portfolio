@@ -4,7 +4,7 @@
       <v-img
         class="mb-4"
         height="150"
-        src="@/assets/DeepOceanWave.svg"
+        src="@/assets/DeepOceanWave.png"
       />
 
       <div class="text-body-2 font-weight-light mb-n1">Portfolio of</div>
@@ -56,6 +56,7 @@
     { name: 'PyCharm', icon: 'mdi-code-braces' },
     { name: 'VS Code', icon: 'mdi-microsoft-visual-studio-code' },
     { name: 'Azure cloud computing', icon: 'mdi-microsoft-azure' },
+    { name: 'Ubuntu/linux', icon: 'mdi-ubuntu' },
     { name: 'Docker', icon: 'mdi-docker' },
     { name: 'GitHub', icon: 'mdi-github' },
     { name: 'Postgres', icon: 'mdi-database' },
