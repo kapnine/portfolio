@@ -28,13 +28,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5+jl%)dl=a=qi97f3&f5n7o&^&n4@gx3zlcf5-dhxi+xlf(n)6'
+SECRET_KEY = env('SECRET_KEY', default='unsafe-secret-key-for-dev')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
     'justinkapacinskas.com',
+    'localhost',
+    'django',
 ]
 
 # Application definition
@@ -62,18 +64,33 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
+    # 'http://localhost:3000',
+    'http://localhost',
     'http://localhost:80',
-    'http://127.0.0.1:3000',
-    'http://20.80.81.230',
-    'http://20.80.81.230:3000',
-    'http://20.80.81.230:80',
+    # 'http://localhost:80',
+    # 'http://127.0.0.1:3000',
+    # 'http://20.80.81.230',
+    # 'http://20.80.81.230:3000',
+    # 'http://20.80.81.230:80',
     'https://justinkapacinskas.com',
     # Add other origins as needed
 ]
 
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    # 'http://localhost:3000',
+    'http://localhost', 
+    'https://justinkapacinskas.com',
+]
+
+# CSRF_COOKIE_SAMESITE = 'Lax'  # or omit this to use Django's default
+# CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SAMESITE = 'None'
+CSRF_COOKIE_SECURE = True
+
 CORS_ALLOW_METHODS = [
-    # 'GET',
+    'GET',
     'POST',
     # 'PUT',
     # 'DELETE',
@@ -124,7 +141,7 @@ DATABASES = {
         'NAME': env('DATABASE_NAME'),
         'USER': env('DATABASE_USER'),
         'PASSWORD': env('DATABASE_PASSWORD'),
-        'HOST': env('DATABASE_HOST', default='localhost'),
+        'HOST': env('DATABASE_HOST', default='postgres'),
         'PORT': env('DATABASE_PORT', default='5432'),
     }
 }

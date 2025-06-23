@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.urls import path, include
 from contact import urls as contact_urls
+from contact.views import get_csrf
 
 urlpatterns = [
+    path('api/csrf/', get_csrf),
     path('api/contact/', include(contact_urls)),
 ]

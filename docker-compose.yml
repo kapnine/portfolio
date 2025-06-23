@@ -32,6 +32,8 @@ services:
       DATABASE_HOST: postgres
       DATABASE_PORT: 5432
       DJANGO_SETTINGS_MODULE: "portfolio_be.settings"
+    # ports:
+    #   - "8000:8000"
     depends_on:
       postgres:
         condition: service_healthy
@@ -62,6 +64,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
+      - ./nginx/certs:/etc/letsencrypt
       - ./nginx/conf.d:/etc/nginx/conf.d
       - /etc/letsencrypt:/etc/letsencrypt:ro
       # Optional: for ACME challenges during renewal

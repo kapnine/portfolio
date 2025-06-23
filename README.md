@@ -7,7 +7,7 @@ See live site here: [https://justinkapacinskas.com](https://justinkapacinskas.co
 ```bash
 ➜  python manage.py runserver
 
-➜  curl -X POST http://localhost:8000/contact/ \
+➜  curl -X POST http://localhost/api/contact/ \
      -H "Content-Type: application/json" \
      -d '{"name": "Cosmic Tester", "email": "alien@example.com", "message": "I come in peace!"}'
 ```

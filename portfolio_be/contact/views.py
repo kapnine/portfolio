@@ -1,12 +1,39 @@
-from django.shortcuts import render
-import json
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+import bleach
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+import json
+from django.views.decorators.csrf import ensure_csrf_cookie
+from django.shortcuts import render
 from .models import Contact
 
-@csrf_exempt  # Remove this in production and handle CSRF tokens appropriately
+@ensure_csrf_cookie
+def get_csrf(request):
+    return JsonResponse({'message': 'CSRF cookie set'})
+
 def contact_view(request):
     if request.method == 'POST':
+        data = json.loads(request.body)
+
+        # Validate and sanitize name
+        name = bleach.clean(data.get('name', '').strip())
+        if not name or len(name) > 100:
+            return JsonResponse({'error': 'Invalid name'}, status=400)
+
+        # Validate and sanitize email
+        email = data.get('email', '').strip()
+        try:
+            validate_email(email)
+        except ValidationError:
+            return JsonResponse({'error': 'Invalid email'}, status=400)
+
+        # Validate and sanitize message
+        message = bleach.clean(data.get('message', '').strip())
+        if not message or len(message) > 500:
+            return JsonResponse({'error': 'Invalid message'}, status=400)
+
+        # Process the sanitized data (e.g., save to database, send email)
+        # return JsonResponse({'message': 'Your message has been sent successfully!'})
         try:
             # Parse the JSON data from the request body
             data = json.loads(request.body)

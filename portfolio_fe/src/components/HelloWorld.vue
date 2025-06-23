@@ -53,13 +53,16 @@
     { name: 'Vue Router', icon: 'mdi-router' },
     { name: 'Vite', icon: 'mdi-lightning-bolt' },
     { name: 'Django', icon: 'mdi-language-python' },
-    { name: 'PyCharm', icon: 'mdi-code-braces' },
-    { name: 'VS Code', icon: 'mdi-microsoft-visual-studio-code' },
+    { name: 'Docker', icon: 'mdi-docker' },
+    { name: 'Nginx', icon: 'mdi-turbine' },
+    { name: 'Certbot', icon: 'mdi-certificate' },
+    { name: 'Postgres', icon: 'mdi-database' },
     { name: 'Azure cloud computing', icon: 'mdi-microsoft-azure' },
     { name: 'Ubuntu/linux', icon: 'mdi-ubuntu' },
-    { name: 'Docker', icon: 'mdi-docker' },
+    { name: 'PyCharm', icon: 'mdi-code-braces' },
+    { name: 'VS Code', icon: 'mdi-microsoft-visual-studio-code' },
+    { name: 'Jira', icon: 'mdi-jira' },
     { name: 'GitHub', icon: 'mdi-github' },
-    { name: 'Postgres', icon: 'mdi-database' },
   ];
 
   // const links = [
