@@ -37,6 +37,7 @@
           { title: 'Home', icon: 'mdi-home', route: '/' },
           { title: 'About', icon: 'mdi-information', route: '/about' },
           { title: 'Contact', icon: 'mdi-note-edit', route: '/contact' },
+          { title: 'Game', icon: 'mdi-gamepad-square', route: '/game' },
         ],
       }
     },
