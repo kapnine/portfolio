@@ -12,10 +12,18 @@
   },
   "dependencies": {
     "@mdi/font": "7.4.47",
-    "axios": "^1.8.4",
+    "axios": "1.14.0",
     "roboto-fontface": "*",
     "vue": "^3.5.13",
     "vuetify": "^3.8.1"
+  },
+  "overrides": {
+    "immutable": "5.1.5",
+    "rollup": "4.59.0",
+    "minimatch": "10.2.3",
+    "js-yaml": "4.1.1",
+    "flatted": "3.4.2",
+    "picomatch": "4.0.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.3",
